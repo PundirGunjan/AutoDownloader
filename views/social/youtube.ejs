@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Downloader — SocialDL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <%- include('../partials/nav') %>
+
+    <section class="page-header" style="--accent:#ff0000">
+      <div class="page-icon">▶️</div>
+      <h1>YouTube Downloader</h1>
+      <p>Download YouTube videos, Shorts and audio in multiple qualities</p>
+    </section>
+
+    <section class="downloader-section">
+      <form class="download-form" action="/youtube" method="POST">
+        <div class="form-group">
+          <label>YouTube Video URL</label>
+          <input type="url" name="url" value="<%= url %>" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            required />
+        </div>
+        <button type="submit" class="submit-btn" style="--btn-color:#ff0000">
+          <span>Download Video</span> ↗
+        </button>
+      </form>
+      <% if (result && result.contents && result.contents.length> 0) { %>
+
+        <% const video=result.contents[0].videos[0]; %>
+
+          <% if (video && video.url) { %>
+            <video controls width="500">
+              <source src="<%= video.url %>" type="video/mp4">
+            </video>
+            <% } else { %>
+              <p>No playable video found</p>
+              <% } %>
+
+                <% } %>
+
+                  <div class="tips-box">
+                    <h4>💡 Supported Formats</h4>
+                    <ul>
+                      <li>youtube.com/watch?v=…</li>
+                      <li>youtu.be/… (short links)</li>
+                      <li>youtube.com/shorts/…</li>
+                    </ul>
+                  </div>
+
+                  <%- include('../partials/result') %>
+    </section>
+
+    <%- include('../partials/footer') %>
+</body>
+
+</html>

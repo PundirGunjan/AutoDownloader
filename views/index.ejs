@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocialDL — Download Anything</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <%- include('partials/nav') %>
+
+  <section class="hero">
+    <div class="hero-badge">✦ All-in-one downloader</div>
+    <h1>Download from<br/><span class="gradient-text">Any Platform</span></h1>
+    <p class="hero-sub">TikTok, Instagram, YouTube, Twitter, Facebook — paste a link, get your media.</p>
+
+    <!-- Quick universal downloader -->
+    <form class="hero-form" action="/autolink" method="POST">
+      <input type="url" name="url" placeholder="Paste any social media URL here…" required />
+      <button type="submit">Download ↗</button>
+    </form>
+  </section>
+
+  <section class="platforms">
+    <h2>Supported Platforms</h2>
+    <div class="platform-grid">
+      <a href="/tiktok" class="platform-card tiktok">
+        <div class="platform-icon">🎵</div>
+        <h3>TikTok</h3>
+        <p>Videos without watermark</p>
+        <span class="try-btn">Try →</span>
+      </a>
+      <a href="/instagram" class="platform-card instagram">
+        <div class="platform-icon">📸</div>
+        <h3>Instagram</h3>
+        <p>Reels, posts & stories</p>
+        <span class="try-btn">Try →</span>
+      </a>
+      <a href="/youtube" class="platform-card youtube">
+        <div class="platform-icon">▶️</div>
+        <h3>YouTube</h3>
+        <p>Videos & Shorts</p>
+        <span class="try-btn">Try →</span>
+      </a>
+      <a href="/twitter" class="platform-card twitter">
+        <div class="platform-icon">🐦</div>
+        <h3>Twitter / X</h3>
+        <p>Videos & GIFs</p>
+        <span class="try-btn">Try →</span>
+      </a>
+      <a href="/facebook" class="platform-card facebook">
+        <div class="platform-icon">📘</div>
+        <h3>Facebook</h3>
+        <p>Videos & Reels</p>
+        <span class="try-btn">Try →</span>
+      </a>
+      
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

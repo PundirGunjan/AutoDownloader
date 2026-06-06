@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= typeof title !== 'undefined' ? title : 'SocialDL' %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="logo">Social<span>DL</span></a>
+    <div class="nav-links">
+      <a href="/autolink">🔗 Universal</a>
+      <a href="/tiktok">🎵 TikTok</a>
+      <a href="/instagram">📸 Instagram</a>
+      <a href="/youtube">▶️ YouTube</a>
+      <a href="/twitter">🐦 Twitter</a>
+      <a href="/facebook">📘 Facebook</a>
+      
+    </div>
+  </nav>
+
+  <main>
+    <%- body %>
+  </main>
+
+  <footer>
+    <p>Built with Node.js · EJS · RapidAPI</p>
+  </footer>
+</body>
+</html>

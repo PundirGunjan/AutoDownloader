@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Error — SocialDL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="logo">Social<span>DL</span></a>
+    <div class="nav-links">
+      <a href="/downloader">⬇ Save to Server</a>
+      <a href="/downloader/downloads">📂 Downloads</a>
+      <a href="/">Home</a>
+    </div>
+  </nav>
+  <div style="text-align:center;padding:6rem 2rem">
+    <div style="font-size:4rem;margin-bottom:1rem"><%= code === 404 ? '🔍' : '💥' %></div>
+    <h1 style="font-size:2rem;font-weight:800;margin-bottom:.5rem"><%= code %> Error</h1>
+    <p style="color:var(--muted);margin-bottom:2rem"><%= message %></p>
+    <a href="/" style="background:var(--accent);color:#fff;padding:.75rem 1.5rem;border-radius:10px;text-decoration:none;font-weight:700">← Go Home</a>
+  </div>
+</body>
+</html>

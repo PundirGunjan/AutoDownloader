@@ -1,0 +1,82 @@
+<% if (typeof error !=='undefined' && error) { %>
+  <div class="alert alert-error">
+    <span>⚠️</span>
+    <%= error %>
+  </div>
+  <% } %>
+
+    <% if (typeof result !=='undefined' && result) { %>
+      <% if (result.error) { %>
+        <div class="alert alert-error">
+          <span>⚠️</span> API Error: <%= result.error %>
+        </div>
+        <% } else { %>
+          <div class="result-box">
+            <!-- Thumbnail -->
+            <% if (result.thumbnail) { %>
+              <div class="result-thumb">
+                <img src="<%= result.thumbnail %>" alt="Thumbnail" onerror="this.style.display='none'" />
+              </div>
+              <% } %>
+
+                <!-- Meta -->
+                <div class="result-meta">
+                  <% if (result.title) { %>
+                    <h3 class="result-title">
+                      <%= result.title %>
+                    </h3>
+                    <% } %>
+                      <% if (result.author) { %>
+                        <p class="result-author">by @<%= result.author %>
+                        </p>
+                        <% } %>
+                          <% if (result.duration) { %><span class="badge">⏱ <%= result.duration %>s</span>
+                            <% } %>
+                              <% if (result.source) { %><span class="badge">📍 <%= result.source %></span>
+                                <% } %>
+                </div>
+
+                <% if (result.medias && result.medias.length> 0) { %>
+                  <% const videoMedia=result.medias.find(m=>
+                    m.extension === 'mp4' || m.type === 'video'
+                    );
+                    %>
+
+                    <% if (videoMedia) { %>
+                      <div class="video-player">
+                        <video controls width="500">
+                          <video id="player" controls width="500"></video>
+                          Your browser does not support video.
+                        </video>
+                      </div>
+                      <% } %>
+                        <% } %>
+
+
+                          <!-- Download Links -->
+                          <% if (result.medias && result.medias.length> 0) { %>
+                            <div class="download-links">
+                              <h4>Download Links</h4>
+                              <% result.medias.forEach(function(media, i) { %>
+                                <a href="<%= media.url %>" target="_blank" class="dl-btn" download>
+                                  <span>⬇</span>
+                                  <%= media.quality || ('Link ' + (i+1)) %>
+              <% if (media.extension) { %><em>.<%= media.extension %></em><% } %>
+              <% if (media.size) { %><small><%= media.size %></small><% } %>
+            </a>
+          <% }) %>
+        </div>
+      <% } %>
+
+    
+
+      <!-- Raw JSON toggle -->
+      <details class="raw-json">
+        <summary>View Raw JSON Response</summary>
+        <pre><code><%= JSON.stringify(result, null, 2) %></code></pre>
+      </details>
+    </div>
+    
+  <% } %>
+<% } %>
+

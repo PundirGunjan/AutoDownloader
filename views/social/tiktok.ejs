@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok Downloader — SocialDL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <%- include('../partials/nav') %>
+
+    <section class="page-header" style="--accent:#ff0050">
+      <div class="page-icon">🎵</div>
+      <h1>TikTok Downloader</h1>
+      <p>Download TikTok videos without watermark in HD quality</p>
+    </section>
+
+    <section class="downloader-section">
+      <form class="download-form" action="/tiktok" method="POST">
+        <div class="form-group">
+          <label>TikTok Video URL</label>
+          <input type="url" name="url" value="<%= url %>" placeholder="https://www.tiktok.com/@user/video/1234567890"
+            required />
+        </div>
+        <button type="submit" class="submit-btn" style="--btn-color:#ff0050">
+          <span>Download Video</span> ↗
+        </button>
+      </form>
+      <% if (result && result.contents && result.contents.length> 0) { %>
+
+        <% const video=result.contents[0].videos[0]; %>
+
+          <% if (video && video.url) { %>
+            <video controls width="500">
+              <source src="<%= video.url %>" type="video/mp4">
+            </video>
+            <% } else { %>
+              <p>No playable video found</p>
+              <% } %>
+
+                <% } %>
+
+                  <div class="tips-box">
+                    <h4>💡 How to get TikTok URL</h4>
+                    <ol>
+                      <li>Open TikTok app or website</li>
+                      <li>Tap Share → Copy Link</li>
+                      <li>Paste the link above</li>
+                    </ol>
+                  </div>
+
+                  <%- include('../partials/result') %>
+    </section>
+
+    <%- include('../partials/footer') %>
+</body>
+
+</html>
