@@ -161,6 +161,11 @@ router.post('/facebook', async (req, res) => {
   }
 });
 
+// about
+router.get('/about',(req,res)=>{
+  res.render('social/about');
+});
+
 // ── API: JSON endpoint for AJAX ───────────────────────────────────────────
 router.post('/api/download', async (req, res) => {
   const { url } = req.body;

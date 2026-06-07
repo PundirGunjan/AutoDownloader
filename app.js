@@ -29,7 +29,7 @@ app.use((err, req, res, next) => {
   res.status(500).render('error', { message: err.message || 'Something went wrong', code: 500 });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
